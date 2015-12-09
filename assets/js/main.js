@@ -122,7 +122,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope,$http,$firebaseAuth,$fir
     //post: new event array item currented with userId attribute = to userId of the user signed in
     $scope.createNewEvent = function(){
         $scope.events.$add({
-          creatorId : Data.userId,
+          creatorId : $scope.currentUser,
           addedTime : Firebase.ServerValue.TIMESTAMP,
           desc : $scope.eventDescription,
           location : $scope.eventLocation,
@@ -139,7 +139,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope,$http,$firebaseAuth,$fir
           var ar = $scope.itineraries[$scope.currentItinerary].events
           ar[$scope.itineraries[$scope.currentItinerary].events.count] = ref.key();
           $scope.itineraries[$scope.currentItinerary].events = ar;
-          $scope.itineraries[$scope.currentItinerary].events.count = $scope.itineraries[$scope.urrentItinerary].events.count + 1;
+          $scope.itineraries[$scope.currentItinerary].events.count = $scope.itineraries[$scope.currentItinerary].events.count + 1;
           $scope.itineraries.$save($scope.currentItinerary).then(function(ref) {
             ref.key() === $scope.itineraries[$scope.currentItinerary].$id; // true
           });
