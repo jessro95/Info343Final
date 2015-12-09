@@ -76,7 +76,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope,$http,$firebaseAuth,$fir
     $scope.events = $firebaseArray($scope.ref.child('events'));
   	
     $scope.currentItinerary = Data.currentItinerary;
-    $scope.currentUser = Data.userId;
+    //$scope.currentUser = Data.userId;
     $scope.itineraryPassword = "";
     $scope.itineraryDesc = "";
     $scope.itineraryLocation = "";
