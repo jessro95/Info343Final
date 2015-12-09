@@ -95,7 +95,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope,$http,$firebaseAuth,$fir
     //post: new itinerary array item currented with userId attribute = to userId of the user signed in
     $scope.createNewItinerary = function(){
         $scope.itineraries.$add({
-          creatorId : Data.userId,
+          creatorId : $scope.currentUser/*, 
           password : $scope.itineraryPassword,
           description : $scope.itineraryDesc,
           location : $scope.itineraryLocation,
@@ -104,7 +104,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope,$http,$firebaseAuth,$fir
           image : $scope.itineraryImage,
           addedTime : Firebase.ServerValue.TIMESTAMP,
           contributors : {count:0},
-          events : {count:0}
+          events : {count:0} */
         }).then(function(ref) {
           $scope.selectItinerary($scope.itineraries.$indexFor(ref.key()));
         });
