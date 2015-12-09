@@ -139,7 +139,7 @@ var myCtrl = myApp.controller('myCtrl', function($scope,$http,$firebaseAuth,$fir
           var ar = $scope.itineraries[$scope.currentItinerary].events
           ar[$scope.itineraries[$scope.currentItinerary].events.count] = ref.key();
           $scope.itineraries[$scope.currentItinerary].events = ar;
-          $scope.itineraries[currentItinerary].events.count = $scope.itineraries[currentItinerary].events.count + 1;
+          $scope.itineraries[$scope.currentItinerary].events.count = $scope.itineraries[currentItinerary].events.count + 1;
           $scope.itineraries.$save($scope.currentItinerary).then(function(ref) {
             ref.key() === $scope.itineraries[$scope.currentItinerary].$id; // true
           });
