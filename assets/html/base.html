@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+
+  <title>Itinerary Builder</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Imports Libraries-->
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+  <!-- Connects my files -->
+  <link href = "css/style.css" rel="stylesheet" type ="text/css"/>
+  <script src="js/multipagearchitecture.js"></script>
+
+</head>
+
+<body>
+  
+  <nav class="navbar navbar-fixed-top" id="navbar">
+    <img src="img/globe.png">
+    <p>Itinerary Builder</p>
+    <ul>
+      <li><a ui-sref="discover">Discover</a></li>
+      <li><a ui-sref="trips">Your Trips</a></li>
+      <li class="signout"><a href="index.html">Sign Out</a></li>
+    </ul>
+  </nav>
+
+  <div ui-view></div>
+  
+</body>

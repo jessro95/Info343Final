@@ -1,0 +1,45 @@
+<div id="searchPage">    
+    <form class="container" name="searchForm">
+            <input name="nameofEvent" class="searching" placeholder="Name of Event" ng-model="eventName"></input>
+
+            <input name="nameofCity" class="searching" placeholder="Name of City" ng-model="city"></input>
+
+            <input name="searchDate" class="searching" placeholder="will have dropdown calendar" ng-model="searchDate"></input>
+
+            <!--Group Size-->
+            <input name="size" class="searching" placeholder="1" ng-model="size"> </input>
+            
+            <button ng-disabled="searchForm.search.$invalid" class="btn btn-primary" ng-click="searchEvent()" type="submit"> Search </button>
+        </form>
+
+        <!-- Event Result-->
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="eventsSearchResult">
+                    <div ng-repeat="searchedEvent in searchedEvents" title="{{searchedEvent.name.text}}">
+                            <img class="logo" src="{{searchedEvent.logo.url}}"> 
+                            <h3>{{searchedEvent.name.text}}</h3>
+                            <button type="button" class="btn" data-toggle="modal" data-target="#myModal">MORE INFO</button>
+                            <!--Modal content -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                            <div class = "modal-dialog">
+                            <div class="modal-content">
+                                <div class="info-body">
+                                    <div class="description">{{searchedEvent.description.html}}</div>
+                                    <p>start time: {{searchedEvent.start.local}}</p>
+                                    <p>end time: {{searchedEvent.end.local}}</p>
+                                    <p>capacity: {{searchedEvent.capacity}}</p>
+                                </div>
+                                <div class="info-footer">
+                                    <button type="button" class="btn btn-default" ng-click="addEvent({{searchedEvent.id}})" data-dismiss="modal" >ADD</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</div>

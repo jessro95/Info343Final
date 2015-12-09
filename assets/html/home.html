@@ -1,0 +1,139 @@
+if theres no itin
+<div class="container">
+    this is list of all current users itins (possibly add serach filter input)
+    <ul>
+        <li ng-repeat="(key,value) in itineraries | filter: value.userId = currentUser ">{{value.title}} ((these all need modals)) <button ng-click="selectItinerary(key)" class="btn btn-success">Select</button>
+        </li>
+    </ul>
+    <form ng-show = "!itinerary" ng-show='!userId' name="itineraryForm" novalidate >
+        <h4>Create New Itinerary</h4>
+        <div class="form-group">
+            <label>Itinerary Title:</label>
+            <input name="itineraryTitle" class="form-control" ng-model="itineraryTitle" ng-minlength="1" required>
+            <p ng-show="itineraryForm.itineraryTitle.$error.minlength" class="help-block">Itinerary title is invalid.</p>
+        </div>
+        <div class="form-group">
+            <label>Itinerary Location:</label>
+            <input name="itineraryLocation" class="form-control" ng-model="itineraryLocation" ng-minlength="1" required>
+            <p ng-show="itineraryForm.itineraryLocation.$error.minlength" class="help-block">Itinerary title is invalid.</p>
+        </div>
+        <div class="form-group">
+            <label>Itinerary Description:</label>
+            <input name="itineraryDesc" class="form-control" ng-model="itineraryDesc" ng-minlength="1" required>
+            <p ng-show="itineraryForm.itineraryDesc.$error.minlength" class="help-block">Itinerary description is invalid.</p>
+        </div>
+        <div class="form-group">
+            <label>Itinerary Start Date:</label>
+            <input type="date" name="itineraryDate" class="form-control" ng-model="itineraryDate" ng-minlength="1" required>
+            <p ng-show="itineraryForm.itineraryDate.$error.minlength" class="help-block">Itinerary date is invalid.</p>
+        </div>
+        <div class="form-group">
+            <label>Itinerary Image Link:</label>
+            <input placeholder="http://" name="itineraryImage" class="form-control" ng-model="itineraryImage" ng-minlength="1" required>
+            <p ng-show="itineraryForm.itineraryImage.$error.minlength" class="help-block">Itinerary image is invalid.</p>
+        </div>
+        <div class="form-group">
+            <label>Itinerary Password:</label>
+            <input type="password" name="itineraryPassword" class="form-control" ng-model="itineraryPassword" ng-minlength="1" required>
+            <p ng-show="itineraryForm.itineraryPassword.$error.minlength" class="help-block">Itinerary password is invalid.</p>
+        </div>
+        <!-- Add an error message if the length is too short ng-disabled="itineraryForm.$invalid" -->
+        <div class="form-group">
+            <button  ng-click="createNewItinerary()" class="btn btn-success">Create</button>
+        </div>
+    </form>
+</div>
+end if no itin
+
+<div ng-show = "currentItinerary">
+    if theres is a itin
+	<div class="form-group">
+        <label>Itinerary Title:{{itineraries[currentItinerary].title}} attributes : </label>
+        <table>
+            <tr ng-repeat="(key,value) in itineraries[currentItinerary] ">
+                <td> {{key}} </td> <td> {{ value }} </td>
+            </tr>  
+        </table>  
+    </div>
+    <div class="form-group">
+        <h4>Add new attribute to </h4>
+        <label>Add New Label</label>
+        <input name="itemLabel" class="form-control" ng-model="itemLabel">
+        <label>Add New Value</label>
+        <input name="itemValue" class="form-control" ng-model="itemValue">
+        <!-- Add an error message if the length is too short -->
+        <button ng-click="addNewItem()" class="btn btn-success">Add</button>
+    </div>
+
+
+    <button ng-show="!currentItinerary.link" ng-click="createLink()" class="btn btn-success">Create link</button>
+    <div class="form-group">
+        <label>Search:</label>
+        <input name="query" class="form-control" ng-model="query">
+        <button ng-model="search" class="btn btn-success">Search</button>                      
+    </div>
+
+
+    <div class="container">
+        <form ng-show = "!itinerary" ng-show='!userId' name="eventForm" novalidate >
+            <div class="form-group">
+                <h4>Create New Event (check current itinerary for latest date</h4>
+                <label>Event Title:</label>
+                <input name="eventTitle" class="form-control" ng-model="eventTitle" ng-minlength="1" required>
+                <p ng-show="myForm.eventTitle.$error.minlength" class="help-block">Event title is invalid.</p>
+            </div>
+            <div class="form-group">
+                <label>Event Location:</label>
+                <input name="eventLocation" class="form-control" ng-model="eventLocation" ng-minlength="1" required>
+                <p ng-show="myForm.eventTitle.$error.minlength" class="help-block">Event location is invalid.</p>
+            </div>
+            <div class="form-group">
+                <label>Itinerary Description:</label>
+                <input name="eventDescription" class="form-control" ng-model="eventDescription" ng-minlength="1" required>
+                <p ng-show="myForm.eventDescription.$error.minlength" class="help-block">Event description is invalid.</p>
+            </div>
+            <div class="form-group">
+                <label>Event Date:</label>
+                <input type="date" name="eventDate" class="form-control" ng-model="eventDate" ng-minlength="1" required>
+                <p ng-show="myForm.eventDate.$error.minlength" class="help-block">Event date is invalid.</p>
+            </div>
+            <div class="form-group">
+                <label>Event Image:</label>
+                <input placeholder="http://" name="eventImage" class="form-control" ng-model="eventImage" ng-minlength="1" required>
+                <p ng-show="myForm.eventImage.$error.minlength" class="help-block">Event image is invalid.</p>
+            </div>
+            <div class="form-group">   
+                <label>Event Price:</label>
+                <input type="number" name="eventPrice" class="form-control" ng-model="eventPrice" ng-minlength="1" required>
+                <p ng-show="myForm.eventPrice.$error.minlength" class="help-block">Event price is invalid.</p>
+            </div>
+            <div class="form-group">
+                <label>Event Start Time:</label>
+                <input type="time" name="eventStart" class="form-control" ng-model="eventStart" ng-minlength="1" required>
+                <p ng-show="myForm.eventStart.$error.minlength" class="help-block">Event start is invalid.</p>
+            </div>
+            <div class="form-group">
+                <label>Event End Time:</label>
+                <input type="time" name="eventEnd" class="form-control" ng-model="eventEnd" ng-minlength="1" required>
+                <p ng-show="myForm.eventEnd.$error.minlength" class="help-block">Event end is invalid.</p>
+            </div>
+            <div class="form-group">
+                <div class="radio">
+                  <label><input type="radio" name="optradio">Public</label>
+                </div>
+                <div class="radio">
+                  <label><input type="radio" name="eventPrivacy" ng-model="eventPrivacy">Private</label>
+                </div>
+            </div>
+
+                <!-- Add an error message if the length is too short -->
+                ((need form checkers))
+                <button ng-click="createNewEvent()" class="btn btn-success">Create</button>
+
+
+            end if theres is a itin
+</div>
+
+    
+</div>
+</div>

@@ -1,0 +1,14 @@
+header {
+	border-bottom:1px solid #e3e3e3;
+	text-align: center
+}
+
+footer {
+	position:fixed;
+	bottom:10px;
+	border-top:1px solid #e3e3e3;
+	width:100%;
+	left:0px;
+	text-align:center;
+	padding:10px;
+}
